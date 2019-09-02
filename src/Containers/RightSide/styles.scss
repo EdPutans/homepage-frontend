@@ -1,0 +1,9 @@
+.RightSide{
+  overflow:auto;
+  margin: 0 -40px 0 0;
+
+  &_linkContainer{
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

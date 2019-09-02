@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './App.scss';
+import LeftSide from './Containers/LeftSide/LeftSide';
+import Center from './Containers/Center/Center';
+import RightSide from './Containers/RightSide/RightSide';
+import { login, getRandomBg } from './api-calls';
 
 function App() {
+  const [links, setLinks] = useState(null);
+  const [bg, setBg] = useState('y');
+  useEffect(() => {
+    login('Steven', 'qweqweqwe').then(r => r && r.links && setLinks(r.links));
+    getRandomBg().then(r => setBg(r));
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{ backgroundImage: `url(${bg})` }}>
+      <div className="App_dark">
+        <LeftSide />
+        <Center />
+        <RightSide links={links} />
+      </div>
     </div>
   );
 }

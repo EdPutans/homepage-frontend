@@ -1,0 +1,18 @@
+.Link{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &_circle{
+    margin: 15px;
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+  }
+
+}
