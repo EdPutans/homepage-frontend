@@ -1,7 +1,7 @@
 .App {
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+  // overflow: hidden;
   background-position: center;
   height: 100vh;
   &_dark{
@@ -9,6 +9,7 @@
     width: 100%;
     background-color: rgba(0,0,0,0.6);
     display: flex;
+    flex-wrap: wrap;
     text-align: center;
     flex-direction: row;
   }

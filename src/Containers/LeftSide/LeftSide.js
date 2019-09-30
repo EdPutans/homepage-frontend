@@ -6,7 +6,6 @@ const LeftSide = () => (
   <Section />
 );
 
-
 export default LeftSide;
 
 LeftSide.propTypes = {};

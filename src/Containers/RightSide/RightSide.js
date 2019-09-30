@@ -6,33 +6,33 @@ import LinkCircle from '../../Components/LinkCircle/LinkCircle';
 import Plus from './Plus';
 
 const tempLinks = [{
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'Reddit',
   img: 'https://picsum.photos/200',
 },
 {
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'Im a baguette',
   img: 'https://picsum.photos/201',
 }, {
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'I love donkeys',
   img: 'https://picsum.photos/202',
 }, {
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'Youtube',
   img: 'https://picsum.photos/203',
 }, {
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'PoopTube',
   img: 'https://picsum.photos/204',
 }, {
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'YouPoop',
   img: 'https://picsum.photos/199',
 }, {
-  url: 'www.yeet.com',
-  name: 'Poop',
+  url: 'http://www.yeet.com',
+  name: 'Duck',
   img: 'https://picsum.photos/200',
 }];
 
@@ -41,7 +41,7 @@ const RightSide = ({ links }) => (
     <div className="RightSide">
       <div className="RightSide_linkContainer">
         {tempLinks.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)}
-        <LinkCircle img={Plus} name="Add link..." />
+        <LinkCircle img={Plus} name="Add link" />
       </div>
     </div>
   </Section>

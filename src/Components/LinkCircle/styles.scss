@@ -3,6 +3,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  & p {
+    font-size: 12px;
+    max-width: 80px;
+      white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+ &:focus {
+    outline: 0;
+  }
+  &:hover{
+    cursor: pointer;
+  }
   &_circle{
     margin: 15px;
     height: 60px;
@@ -12,7 +25,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
     & img{
         height: 60px;
     width: 60px;

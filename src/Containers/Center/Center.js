@@ -14,7 +14,7 @@ const Center = () => {
         onChange={e => setQuery(e.target.value)}
         onKeyDown={(e) => {
           if (e.keyCode === 13) {
-            window.open(`http://google.com/search?q=${query}`, '_blank');
+            window.open(`http://google.com/search?q=${query}`, '_self');
           }
         }}
 
