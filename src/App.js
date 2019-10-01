@@ -3,7 +3,9 @@ import './App.scss';
 import LeftSide from './Containers/LeftSide/LeftSide';
 import Center from './Containers/Center/Center';
 import RightSide from './Containers/RightSide/RightSide';
-import { login, getRandomBg, getWeather } from './api-calls';
+import {
+  login, getRandomBg, getWeather, getCityByIp,
+} from './api-calls';
 import AddLinkModal from './Containers/AddLinkModal/AddLinkModal';
 
 function App() {
@@ -12,13 +14,15 @@ function App() {
   const [city, setCity] = useState(null);
   const [weather, setWeather] = useState(null);
   const [linkModalOpen, setLinkModalOpen] = useState(false);
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   useEffect(() => {
-    login('Edd', 'qweqweqwe')
-      .then((r) => {
-        setLinks(r && r.links);
-        return setCity(r && r.city);
-      });
+    // login('Edd', 'qweqweqwe')
+    //   .then((r) => {
+    //     setLinks(r && r.links);
+    //     return setCity(r && r.city);
+    //   });
+    getCityByIp().then(r => r.city && setCity(r.city));
     getRandomBg().then(r => setBg(r));
   }, []);
 

@@ -9,17 +9,19 @@ const Center = () => {
 
   return (
     <Section>
-      <Input
-        value={query}
-        onChange={e => setQuery(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.keyCode === 13) {
-            window.open(`http://google.com/search?q=${query}`, '_self');
-          }
-        }}
+      <div className="Center">
+        <Input
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.keyCode === 13) {
+              window.open(`http://google.com/search?q=${query}`, '_self');
+            }
+          }}
 
-        placeholder="Search Google"
-      />
+          placeholder="Search Google"
+        />
+      </div>
     </Section>
   );
 };

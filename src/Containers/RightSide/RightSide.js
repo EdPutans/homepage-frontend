@@ -4,7 +4,6 @@ import Section from '../Section';
 import './styles.scss';
 import LinkCircle from '../../Components/LinkCircle/LinkCircle';
 import Plus from './Plus';
-import PLUS from '../../assets/plus.png';
 
 const tempLinks = [{
   url: 'http://www.yeet.com',
@@ -41,11 +40,9 @@ const RightSide = ({ links, onClickAdd }) => (
   <Section noborder>
     <div className="RightSide">
       <div className="RightSide_linkContainer">
-        {tempLinks.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)}
-        <LinkCircle img={Plus} name="Add link" />
+        {tempLinks.map(l => <LinkCircle img={l.img} onClick={() => window.open(l.url, '_self')} name={l.name} />)}
+        <LinkCircle img={Plus} name="Add link" onClick={() => onClickAdd()} />
         {links && links.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)}
-        <LinkCircle img={null} url="www.yeet.com" name="missing stuff" />
-        <LinkCircle img={PLUS} onClick={() => onClickAdd()} name="_" />
       </div>
     </div>
   </Section>

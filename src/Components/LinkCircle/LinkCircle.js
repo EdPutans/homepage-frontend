@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles.scss';
 
-const LinkCircle = ({ url, name, img }) => (
+const LinkCircle = ({ name, img, onClick  }) => (
   <div
     className="Link"
     role="button"
     tabIndex={0}
-    onKeyDown={() => window.open(url, '_self')}
-    onClick={() => window.open(url, '_self')}
+    onKeyDown={() => onClick()}
+    onClick={() => onClick()}
   >
     <div className="Link_circle">
       <img src={img} alt={name} />

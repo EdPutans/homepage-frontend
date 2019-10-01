@@ -21,7 +21,7 @@ export const request = (url, call, body) => fetch(url, {
   body: JSON.stringify(body) || undefined,
 })
   .then(r => r.json())
-  .catch(err => console.log(err));
+  .catch(err => !console.log(err));
 
 export const login = (username, password) => request('http://localhost:5000/users/login', 'POST', { username, password });
 
@@ -31,3 +31,4 @@ export const getRandomBg = () => request('https://picsum.photos/v2/list', 'GET')
   .catch(err => console.log(err));
 
 export const getWeather = city => request(`http://api.apixu.com/v1/current.json?key=c2cbc4959fb04350be7212444190309&q=${city}`);
+export const getCityByIp = () => request('https://ipapi.co/json', 'GET');
