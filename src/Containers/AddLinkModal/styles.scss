@@ -1,0 +1,29 @@
+.AddLinkModal{
+  margin: auto;
+  background-color: white;
+  height: 350px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  &_pageCover{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+  }
+  &_close{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+  }
+  &_input{
+    flex: 1;
+    margin: 20px auto;
+  }
+
+}

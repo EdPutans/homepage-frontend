@@ -2,7 +2,7 @@ import React from 'react';
 import './styles.scss';
 
 const Input = ({
-  onChange, value, type, placeholder, ...rest
+  onChange, value, type, placeholder, textColor, ...rest
 }) => (
   <input
     type={type}
@@ -10,6 +10,7 @@ const Input = ({
     value={value}
     className="Input"
     placeholder={placeholder}
+    style={{ color: textColor }}
     {...rest}
   />
 );

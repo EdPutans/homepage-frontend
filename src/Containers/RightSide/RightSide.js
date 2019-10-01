@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Section from '../Section';
 import './styles.scss';
-import PropTypes from 'prop-types';
 import LinkCircle from '../../Components/LinkCircle/LinkCircle';
 import Plus from './Plus';
+import PLUS from '../../assets/plus.png';
 
 const tempLinks = [{
   url: 'http://www.yeet.com',
@@ -36,12 +37,15 @@ const tempLinks = [{
   img: 'https://picsum.photos/200',
 }];
 
-const RightSide = ({ links }) => (
+const RightSide = ({ links, onClickAdd }) => (
   <Section noborder>
     <div className="RightSide">
       <div className="RightSide_linkContainer">
         {tempLinks.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)}
         <LinkCircle img={Plus} name="Add link" />
+        {links && links.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)}
+        <LinkCircle img={null} url="www.yeet.com" name="missing stuff" />
+        <LinkCircle img={PLUS} onClick={() => onClickAdd()} name="_" />
       </div>
     </div>
   </Section>
@@ -54,5 +58,9 @@ RightSide.propTypes = {
     name: PropTypes.string,
     url: PropTypes.string,
   })),
+  onClickAdd: PropTypes.func.isRequired,
 };
-RightSide.defaultProps = { links: [] };
+
+RightSide.defaultProps = {
+  links: [],
+};
