@@ -38,6 +38,11 @@ function App() {
         <RightSide links={links} onClickAdd={() => setLinkModalOpen(true)} />
         {linkModalOpen && <AddLinkModal onClose={() => setLinkModalOpen(false)} />}
       </div>
+      <p className="App_disclaimerLOL">
+        Built by Ed Putans, for funzies. See repo
+        {' '}
+        <a className="App_disclaimerLOL_a" href="https://github.com/EdPutans/homepage-frontend">here.</a>
+      </p>
     </div>
   );
 }

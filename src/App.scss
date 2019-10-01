@@ -12,4 +12,16 @@
     text-align: center;
     flex-direction: row;
   }
+  &_disclaimerLOL{
+    position: absolute;
+    right: 30px;
+    bottom: 10px;
+    font-size: 12px;
+    color: rgb(200,200,200);
+    &_a {
+      color: rgb(200,200,200);
+
+
+    }
+  }
 }
