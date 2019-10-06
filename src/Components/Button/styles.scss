@@ -1,8 +1,16 @@
 .Button{
   height: 20px;
-  margin: 15px;
+  margin: 10px;
   border-radius: 10px;
   color: white;
   height: 30px;
-  background-color: rgb(200,200,200);
+  border: none;
+  background-color: #FF4081;
+  &:focus{
+    outline: none;
+  }
+  &_disabled{
+    @extend .Button;
+    background-color: #cccccc;
+  }
 }

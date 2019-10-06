@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles.scss';
 
-const Button = ({ text, onClick }) => (
-  <button className="Button" tabIndex={0} type="button" onClick={() => onClick()}>
+const Button = ({ text, onClick, disabled }) => (
+  <button className={`Button${disabled ? '_disabled' : ''}`} disabled={disabled} tabIndex={0} type="button" onClick={() => onClick()}>
     {text}
   </button>
 );

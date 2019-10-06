@@ -1,7 +1,18 @@
 .RightSide{
   overflow:auto;
+  position: relative;
+  min-height: 200px;
   &_linkContainer{
     display: flex;
+    margin-right: 40px;
     flex-wrap: wrap;
+  }
+  &_edit{
+   position: absolute; 
+   top: 15px;
+   right: 15px;
+   &:focus {
+    outline: 0;
+  }
   }
 }

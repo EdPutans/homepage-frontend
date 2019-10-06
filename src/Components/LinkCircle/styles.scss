@@ -18,6 +18,9 @@ $size: 55px;
     cursor: pointer;
   }
   &_circle{
+    &_container{
+      position: relative;
+    }
     margin: 15px;
     height: $size;
     width: $size;
@@ -26,7 +29,16 @@ $size: 55px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 3px solid #fff;
+    &_removeButton{
+      color: white;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      z-index: 3;
+    }
     & img{
+      background-color: #cccccc;
       height: $size;
       width: $size;
     }

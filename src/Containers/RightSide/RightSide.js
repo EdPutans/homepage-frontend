@@ -1,52 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Section from '../Section';
 import './styles.scss';
 import LinkCircle from '../../Components/LinkCircle/LinkCircle';
 import Plus from './Plus';
+import def from '../../assets/global.png';
+import Edit from '../../assets/edit';
 
-const tempLinks = [{
-  url: 'http://www.yeet.com',
-  name: 'Reddit',
-  img: 'https://picsum.photos/200',
-},
-{
-  url: 'http://www.yeet.com',
-  name: 'Im a baguette',
-  img: 'https://picsum.photos/201',
-}, {
-  url: 'http://www.yeet.com',
-  name: 'I love donkeys',
-  img: 'https://picsum.photos/202',
-}, {
-  url: 'http://www.yeet.com',
-  name: 'Youtube',
-  img: 'https://picsum.photos/203',
-}, {
-  url: 'http://www.yeet.com',
-  name: 'PoopTube',
-  img: 'https://picsum.photos/204',
-}, {
-  url: 'http://www.yeet.com',
-  name: 'YouPoop',
-  img: 'https://picsum.photos/199',
-}, {
-  url: 'http://www.yeet.com',
-  name: 'Duck',
-  img: 'https://picsum.photos/200',
-}];
+const RightSide = ({
+  // links,
+  localLinks,
+  onClickAdd,
+  removeLink,
+}) => {
+  const [editing, setEditing] = useState(false);
 
-const RightSide = ({ links, onClickAdd }) => (
-  <Section noborder>
-    <div className="RightSide">
-      <div className="RightSide_linkContainer">
-        {tempLinks.map(l => <LinkCircle img={l.img} onClick={() => window.open(l.url, '_self')} name={l.name} />)}
-        <LinkCircle img={Plus} name="Add link" onClick={() => onClickAdd()} />
-        {links && links.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)}
+  const openLink = url => window.open(url.includes('http://') ? url : `http://${url}`, '_self');
+
+  return (
+    <Section>
+      <div className="RightSide">
+        <div className="RightSide_edit" role="button" tabIndex={0} onKeyDown={() => {}} onClick={() => setEditing(!editing)}>
+          <Edit width={20} height={20} fill={editing ? 'lightgrey' : 'white'} />
+        </div>
+        <div className="RightSide_linkContainer">
+          {localLinks && localLinks.map(l => (
+            <LinkCircle
+              removeLink={removeLink}
+              editing={editing}
+              img={l.img || def}
+              onClick={() => openLink(l.url)}
+              name={l.name}
+            />
+          ))}
+          {editing && <LinkCircle img={Plus} name="Add link" onClick={() => onClickAdd()} />}
+          {/* {links && links.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)} */}
+        </div>
       </div>
-    </div>
-  </Section>
-);
+    </Section>
+  );
+};
+
 
 export default RightSide;
 
