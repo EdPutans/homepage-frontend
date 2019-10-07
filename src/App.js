@@ -1,40 +1,29 @@
+/* eslint-disable no-undef */
 import React, { useState, useEffect } from 'react';
 import './App.scss';
 import LeftSide from './Containers/LeftSide/LeftSide';
 import Center from './Containers/Center/Center';
 import RightSide from './Containers/RightSide/RightSide';
-import {
-  login, getRandomBg, getWeather, getCityByIp,
-} from './api-calls';
+import { getRandomBg, getWeather, getCityByIp } from './api-calls';
 import AddLinkModal from './Containers/AddLinkModal/AddLinkModal';
-import getBase64FromFile from './Components/shared';
-import loader from './assets/loading.gif';
+import getBase64FromFile from './shared';
 
 function App() {
-  // const [links, setLinks] = useState(null);
   const [bg, setBg] = useState('y');
   const [city, setCity] = useState(null);
   const [weather, setWeather] = useState(null);
   const [linkModalOpen, setLinkModalOpen] = useState(false);
-  // const [currentLocation, setCurrentLocation] = useState(null);
   const [localLinks, setLocalLinks] = useState([]);
   const [savingError, setSavingError] = useState(null);
-  const [loadingImage, setLoadingImage] = useState(true);
   useEffect(() => {
-    // login('Ed', 'passwordHere')
-    //   .then((r) => {
-    //     setLinks(r && r.links);
-    //     return setCity(r && r.city);
-    //   });
     getCityByIp().then(r => r.city && setCity(r.city));
-    getRandomBg().then((r) => {
-      setBg(r);
-      setLoadingImage(false);
-    });
+    getRandomBg().then(r => setBg(r));
   }, []);
+
   useEffect(() => {
     getWeather(city).then(r => setWeather(r));
   }, [city]);
+
   useEffect(() => {
     const links = JSON.parse(localStorage.getItem('localLinks'));
     setLocalLinks(links);
@@ -47,37 +36,33 @@ function App() {
     if (image) {
       img = await getBase64FromFile(image);
     }
-    console.log(name, url, img);
     const storedLinks = JSON.parse(localStorage.getItem('localLinks'));
     const linkObject = { name, url, img };
     if (!name || !url) {
       return setSavingError('Must have url and name');
     }
-    if (storedLinks.find(l => l.name === name)) {
-      return setSavingError('Link name must be unique');
-    }
-    if (!storedLinks) {
-      localStorage.setItem('localLinks', JSON.stringify([linkObject]));
-    } else {
+    if (storedLinks) {
       localStorage.setItem('localLinks', JSON.stringify([...storedLinks, linkObject]));
+      if (storedLinks.find(l => l.name === name)) {
+        return setSavingError('Bookmark name must be unique');
+      }
+    } else {
+      localStorage.setItem('localLinks', JSON.stringify([linkObject]));
     }
     setLocalLinks([...storedLinks, linkObject]);
-    setLinkModalOpen(false);
+    return setLinkModalOpen(false);
   };
-
   const removeLink = (name) => {
     const storedLinks = JSON.parse(localStorage.getItem('localLinks'));
     const filteredLinks = storedLinks.filter(l => l.name !== name);
     localStorage.setItem('localLinks', JSON.stringify(filteredLinks));
     setLocalLinks(filteredLinks);
   };
-  console.log(localLinks);
+
   return (
     <div className="App" style={{ backgroundImage: `url(${bg})` }}>
 
       <div className="App_dark">
-      {loadingImage && <img src={loader} />}
-
         <LeftSide weather={city && weather} />
         <Center />
         <RightSide

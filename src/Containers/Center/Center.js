@@ -5,8 +5,6 @@ import Input from '../../Components/Input/Input';
 
 const Center = () => {
   const [query, setQuery] = useState(null);
-
-
   return (
     <Section>
       <div className="Center">
@@ -15,6 +13,7 @@ const Center = () => {
           onChange={e => setQuery(e.target.value)}
           onKeyDown={(e) => {
             if (e.keyCode === 13) {
+              // eslint-disable-next-line no-undef
               window.open(`http://google.com/search?q=${query}`, '_self');
             }
           }}
@@ -27,6 +26,3 @@ const Center = () => {
 };
 
 export default Center;
-
-Center.propTypes = {};
-Center.defaultProps = {};

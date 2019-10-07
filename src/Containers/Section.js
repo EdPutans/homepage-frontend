@@ -12,5 +12,4 @@ export default Section;
 
 Section.propTypes = {
   children: PropTypes.node.isRequired,
-
 };

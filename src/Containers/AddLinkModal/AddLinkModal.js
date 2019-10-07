@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Input from '../../Components/Input/Input';
 import './styles.scss';
 import Button from '../../Components/Button/Button';
@@ -13,7 +14,7 @@ const AddLinkModal = ({ onClose, addLink, savingError }) => {
   return (
     <div className="AddLinkModal_pageCover">
       <div className="AddLinkModal">
-
+        <p className="AddLinkModal_title">Add bookmark</p>
         <Input
           textColor="rgb(100,100,100)"
           onChange={e => setLinkInfo({ ...linkInfo, name: e.target.value })}
@@ -55,6 +56,12 @@ const AddLinkModal = ({ onClose, addLink, savingError }) => {
       </div>
     </div>
   );
+};
+
+AddLinkModal.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  addLink: PropTypes.func.isRequired,
+  savingError: PropTypes.string.isRequired,
 };
 
 export default AddLinkModal;

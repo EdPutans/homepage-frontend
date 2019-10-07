@@ -4,54 +4,50 @@ import Section from '../Section';
 import './styles.scss';
 import LinkCircle from '../../Components/LinkCircle/LinkCircle';
 import Plus from './Plus';
-import def from '../../assets/global.png';
 import Edit from '../../assets/edit';
+import ClickableDiv from '../../Components/ClickableDiv';
 
-const RightSide = ({
-  // links,
-  localLinks,
-  onClickAdd,
-  removeLink,
-}) => {
+const RightSide = ({ localLinks, onClickAdd, removeLink }) => {
   const [editing, setEditing] = useState(false);
-
+  // eslint-disable-next-line no-undef
   const openLink = url => window.open(url.includes('http://') ? url : `http://${url}`, '_self');
-
   return (
     <Section>
       <div className="RightSide">
-        <div className="RightSide_edit" role="button" tabIndex={0} onKeyDown={() => {}} onClick={() => setEditing(!editing)}>
+        <ClickableDiv className="RightSide_edit" onClick={() => setEditing(!editing)}>
           <Edit width={20} height={20} fill={editing ? 'lightgrey' : 'white'} />
-        </div>
+        </ClickableDiv>
         <div className="RightSide_linkContainer">
           {localLinks && localLinks.map(l => (
             <LinkCircle
+              key={l.name}
               removeLink={removeLink}
               editing={editing}
-              img={l.img || def}
+              img={l.img}
               onClick={() => openLink(l.url)}
               name={l.name}
             />
           ))}
           {editing && <LinkCircle img={Plus} name="Add link" onClick={() => onClickAdd()} />}
-          {/* {links && links.map(l => <LinkCircle img={l.img} url={l.url} name={l.name} />)} */}
         </div>
       </div>
     </Section>
   );
 };
 
-
 export default RightSide;
 
+const linkProps = PropTypes.arrayOf(PropTypes.shape({
+  name: PropTypes.string,
+  url: PropTypes.string,
+}));
+
 RightSide.propTypes = {
-  links: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    url: PropTypes.string,
-  })),
+  localLinks: linkProps,
   onClickAdd: PropTypes.func.isRequired,
+  removeLink: PropTypes.func.isRequired,
 };
 
 RightSide.defaultProps = {
-  links: [],
+  localLinks: [],
 };
