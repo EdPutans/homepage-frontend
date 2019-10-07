@@ -9,7 +9,7 @@ const LinkCircle = ({
 }) => (
   <div className="Link">
     <div className="Link_circle_container">
-      {editing && <ClickableDiv className="Link_circle_removeButton" onClick={() => removeLink(name)}>X</ClickableDiv>}
+      {editing && <ClickableDiv className="Link_circle_removeButton" onClick={() => removeLink()}>X</ClickableDiv>}
       <ClickableDiv
         className="Link_circle"
         onClick={() => onClick()}

@@ -21,10 +21,12 @@ const RightSide = ({ localLinks, onClickAdd, removeLink }) => {
           {localLinks && localLinks.map(l => (
             <LinkCircle
               key={l.name}
-              removeLink={removeLink}
+              removeLink={() => removeLink(l.name)}
               editing={editing}
               img={l.img}
-              onClick={() => openLink(l.url)}
+              onClick={() => { 
+                !editing? openLink(l.url) : removeLink(l.name)
+              }}
               name={l.name}
             />
           ))}

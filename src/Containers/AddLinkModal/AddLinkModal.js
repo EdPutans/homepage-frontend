@@ -5,7 +5,7 @@ import './styles.scss';
 import Button from '../../Components/Button/Button';
 
 const AddLinkModal = ({ onClose, addLink, savingError }) => {
-  const [img, setImg] = useState(null);
+  const [image, setimage] = useState(null);
   const [linkInfo, setLinkInfo] = useState({
     name: '',
     url: '',
@@ -28,7 +28,7 @@ const AddLinkModal = ({ onClose, addLink, savingError }) => {
           placeholder="URL"
           onEnter={(e) => {
             if (e.keyCode === 13) {
-              addLink(addLink({ url: linkInfo.url, name: linkInfo.name }, img));
+              addLink({ url: linkInfo.url, name: linkInfo.name, image });
             }
           }
           }
@@ -40,7 +40,7 @@ const AddLinkModal = ({ onClose, addLink, savingError }) => {
             accept="image/png, image/jpeg"
             onChange={(e) => {
               if (e && e.target && e.target.files && e.target.files[0]) {
-                setImg(e.target.files[0]);
+                setimage(e.target.files[0]);
               }
             }
           }
@@ -48,7 +48,7 @@ const AddLinkModal = ({ onClose, addLink, savingError }) => {
         </div>
         <Button
           disabled={!linkInfo.url || !linkInfo.name}
-          onClick={() => addLink({ url: linkInfo.url, name: linkInfo.name }, img)}
+          onClick={() => addLink({ url: linkInfo.url, name: linkInfo.name, image })}
           text="Submit"
         />
         <Button onClick={() => onClose()} text="Cancel" />

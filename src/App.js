@@ -29,29 +29,27 @@ function App() {
     setLocalLinks(links);
   }, []);
 
-  const writeLink = async (linkinfo, image) => {
+  const writeLink = async (linkinfo) => {
     setSavingError(null);
-    const { name, url } = linkinfo;
-    let img;
+    const { name, url, image } = linkinfo;
+    let parsedImg;
     if (image) {
-      img = await getBase64FromFile(image);
+      parsedImg = await getBase64FromFile(image);
     }
     const storedLinks = JSON.parse(localStorage.getItem('localLinks'));
-    const linkObject = { name, url, img };
-    if (!name || !url) {
-      return setSavingError('Must have url and name');
+    if (storedLinks && storedLinks.find(l => l.name === name)) {
+      return setSavingError('Bookmark name must be unique');
     }
+    const linkObject = { name, url, image: parsedImg };
     if (storedLinks) {
       localStorage.setItem('localLinks', JSON.stringify([...storedLinks, linkObject]));
-      if (storedLinks.find(l => l.name === name)) {
-        return setSavingError('Bookmark name must be unique');
-      }
     } else {
       localStorage.setItem('localLinks', JSON.stringify([linkObject]));
     }
     setLocalLinks([...storedLinks, linkObject]);
-    return setLinkModalOpen(false);
+    setLinkModalOpen(false);
   };
+
   const removeLink = (name) => {
     const storedLinks = JSON.parse(localStorage.getItem('localLinks'));
     const filteredLinks = storedLinks.filter(l => l.name !== name);
@@ -73,7 +71,9 @@ function App() {
         {linkModalOpen && (
         <AddLinkModal
           savingError={savingError}
-          addLink={(linkObj, img) => writeLink(linkObj, img)}
+          addLink={(linkObj) => {
+            writeLink(linkObj);
+          }}
           onClose={() => {
             setLinkModalOpen(false);
             setSavingError(null);
