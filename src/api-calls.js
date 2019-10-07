@@ -15,5 +15,5 @@ export const getRandomBg = () => request('https://picsum.photos/v2/list', 'GET')
   .then(r => r[getRandomInt(r.length - 1)].download_url)
   .catch(err => console.log(err));
 
-export const getWeather = city => request(`http://api.apixu.com/v1/current.json?key=c2cbc4959fb04350be7212444190309&q=${city}`);
+export const getWeather = city => request(`https://api.apixu.com/v1/current.json?key=c2cbc4959fb04350be7212444190309&q=${city}`);
 export const getCityByIp = () => request('https://ipapi.co/json', 'GET');
