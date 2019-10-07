@@ -1,4 +1,4 @@
-# A replacement for the default homepage on your browser
+# Homepagie - A replacement for your browser's default homepage
 
 Just copy the link and set as the homepage in your browser. That's it.
 
