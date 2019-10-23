@@ -1,4 +1,4 @@
-# Homepagie - A replacement for your browser's default homepage
+# Homie - A replacement for your browser's default homepage
 
 Demo: https://eds-custom-homepage.netlify.com/
 
