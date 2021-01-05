@@ -37,7 +37,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
     "@babel/runtime": "^7.4.3",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bluebird": "^3.5.4",
     "cross-env": "^5.2.0",
     "eslint": "5.6.0",
