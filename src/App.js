@@ -22,7 +22,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getWeather(city).then(r => setWeather(r));
+    if (!city) return;
+
+    getWeather(city).then((r) => {
+      setWeather(r);
+    });
   }, [city]);
 
   useEffect(() => {

@@ -1,18 +1,33 @@
+.Left_weather {
+  display: flex;
+  justify-content: center;
+}
 
-  .Left_dateTime{
-    margin: 30px 0;
-  }
-    .Left_dateTime_date{
-      font-size: 20px;
-    }
-    .Left_dateTime_time{
-      font-size: 36px;
-    }
+.Left_dateTime {
+  margin: 30px 0;
+}
 
-    .Left_weather_city{
-      margin: 10px;
-      font-size: 20px;
-    }
-    .Left_weather_icon{
-      margin: 10px;
-    }
+.Left_dateTime_date {
+  font-size: 20px;
+}
+
+.Left_dateTime_time {
+  font-size: 36px;
+}
+
+.Left_weather_city {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.Left_weather_icon {
+  margin: 10px;
+  margin-right: 30px;
+  filter: grayscale(1);
+  width: 60px;
+  height: 60px;
+}
+
+.Left_weather_icon img {
+  border-radius: 50%;
+}

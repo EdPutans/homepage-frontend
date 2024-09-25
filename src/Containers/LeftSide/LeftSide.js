@@ -14,16 +14,19 @@ const LeftSide = ({ weather }) => (
       </div>
       {weather && (
         <div className="Left_weather">
-          <p className="Left_weather_city">
-            {weather.location.name}
-          </p>
-          <p>
-            {weather && `${weather.current.temp_c} C - `}
-            {weather && weather.current.condition.text}
-          </p>
           <div className="Left_weather_icon">
-            <img src={weather.current.condition.icon} alt={weather.current.temp_c} />
+            <img src={weather.current.weather_icons[0]} alt={weather.current.weather_descriptions.join(', ')} />
           </div>
+          <div>
+            <p className="Left_weather_city">
+              {weather.location.name}
+            </p>
+            <p>
+              {weather && `${weather.current.temperature} C - `}
+              {weather && weather.current.weather_descriptions.join(', ')}
+            </p>
+          </div>
+
         </div>
       )}
     </div>
@@ -37,12 +40,11 @@ LeftSide.propTypes = {
     location: PropTypes.shape({
       name: PropTypes.string,
     }),
+
     current: PropTypes.shape({
-      temp_c: PropTypes.string,
-      condition: PropTypes.shape({
-        text: PropTypes.string,
-        icon: PropTypes.string,
-      }),
+      temperature: PropTypes.string,
+      weather_descriptions: PropTypes.arrayOf(PropTypes.string),
+      weather_icons: PropTypes.arrayOf(PropTypes.string),
     }),
   }).isRequired,
 };
