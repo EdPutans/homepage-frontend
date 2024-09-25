@@ -1,20 +1,21 @@
 /* eslint-disable no-undef */
-import React, { useState, useEffect } from 'react';
-import './App.scss';
-import LeftSide from './Containers/LeftSide/LeftSide';
-import Center from './Containers/Center/Center';
-import RightSide from './Containers/RightSide/RightSide';
-import { getRandomBg, getWeather, getCityByIp } from './api-calls';
+import React, { useEffect, useState } from 'react';
+import { getCityByIp, getRandomBg, getWeather } from './api-calls';
+import './App.css';
 import AddLinkModal from './Containers/AddLinkModal/AddLinkModal';
+import Center from './Containers/Center/Center';
+import LeftSide from './Containers/LeftSide/LeftSide';
+import RightSide from './Containers/RightSide/RightSide';
 import getBase64FromFile from './shared';
 
 function App() {
-  const [bg, setBg] = useState('y');
+  const [bg, setBg] = useState('');
   const [city, setCity] = useState(null);
   const [weather, setWeather] = useState(null);
   const [linkModalOpen, setLinkModalOpen] = useState(false);
   const [localLinks, setLocalLinks] = useState([]);
   const [savingError, setSavingError] = useState(null);
+
   useEffect(() => {
     getCityByIp().then(r => r.city && setCity(r.city));
     getRandomBg().then(r => setBg(r));
@@ -25,7 +26,9 @@ function App() {
   }, [city]);
 
   useEffect(() => {
-    const links = JSON.parse(localStorage.getItem('localLinks'));
+    let links = JSON.parse(localStorage.getItem('localLinks'));
+    if (!links || links === 'undefined') links = [];
+
     setLocalLinks(links);
   }, []);
 
@@ -37,16 +40,19 @@ function App() {
       parsedImg = await getBase64FromFile(image);
     }
     const storedLinks = JSON.parse(localStorage.getItem('localLinks'));
+
     if (storedLinks && storedLinks.find(l => l.name === name)) {
       return setSavingError('Bookmark name must be unique');
     }
     const linkObject = { name, url, image: parsedImg };
+
     if (storedLinks) {
       localStorage.setItem('localLinks', JSON.stringify([...storedLinks, linkObject]));
     } else {
       localStorage.setItem('localLinks', JSON.stringify([linkObject]));
     }
-    setLocalLinks([...storedLinks, linkObject]);
+
+    setLocalLinks([...localLinks, linkObject]);
     setLinkModalOpen(false);
   };
 
@@ -69,23 +75,23 @@ function App() {
           onClickAdd={() => setLinkModalOpen(true)}
         />
         {linkModalOpen && (
-        <AddLinkModal
-          savingError={savingError}
-          addLink={(linkObj) => {
-            writeLink(linkObj);
-          }}
-          onClose={() => {
-            setLinkModalOpen(false);
-            setSavingError(null);
-          }
-          }
-        />
+          <AddLinkModal
+            savingError={savingError}
+            addLink={(linkObj) => {
+              writeLink(linkObj);
+            }}
+            onClose={() => {
+              setLinkModalOpen(false);
+              setSavingError(null);
+            }
+            }
+          />
         )}
       </div>
-      <p className="App_disclaimerLOL">
+      <p className="App_disclaimer">
         Built by Ed Putans, for funzies. See repo
         {' '}
-        <a className="App_disclaimerLOL_a" href="https://github.com/EdPutans/homepage-frontend">here.</a>
+        <a className="App_disclaimer_link" href="https://github.com/EdPutans/homepage-frontend">here.</a>
       </p>
     </div>
   );

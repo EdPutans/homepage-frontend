@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.scss';
+import React from 'react';
+import './styles.css';
 
 const Input = ({
   onChange, value, type, placeholder, textColor, onEnter,
@@ -26,10 +26,10 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  onChange: () => {},
+  onChange: () => { },
   value: '',
   type: undefined,
   textColor: 'black',
-  onEnter: () => {},
+  onEnter: () => { },
 };
 export default Input;

@@ -1,20 +1,18 @@
-.Left{
-  &_dateTime{
+
+  .Left_dateTime{
     margin: 30px 0;
-    &_date{
+  }
+    .Left_dateTime_date{
       font-size: 20px;
     }
-    &_time{
+    .Left_dateTime_time{
       font-size: 36px;
     }
-  }
-  &_weather{
-    &_city{
+
+    .Left_weather_city{
       margin: 10px;
       font-size: 20px;
     }
-    &_icon{
+    .Left_weather_icon{
       margin: 10px;
     }
-  }
-}

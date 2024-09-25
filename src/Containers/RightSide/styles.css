@@ -1,0 +1,22 @@
+.RightSide {
+  overflow: auto;
+  position: relative;
+  min-height: 200px;
+}
+
+.RightSide_linkContainer {
+  display: flex;
+  margin-right: 40px;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.RightSide_edit {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.RightSide:focus {
+  outline: 0;
+}

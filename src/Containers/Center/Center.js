@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Section from '../Section';
-import './styles.scss';
 import Input from '../../Components/Input/Input';
+import Section from '../Section';
+import './styles.css';
 
 const Center = () => {
   const [query, setQuery] = useState(null);

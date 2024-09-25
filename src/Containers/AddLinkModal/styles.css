@@ -1,0 +1,46 @@
+.AddLinkModal {
+  margin: auto;
+  z-index: 3;
+  background-color: white;
+  height: 350px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.AddLinkModal_title {
+  color: black;
+  font-size: 18px;
+  padding: 0 0 20px 0;
+}
+
+.AddLinkModal_pageCover {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+}
+
+.AddLinkModal_close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+
+.AddLinkModal_input {
+  flex: 1;
+  margin: 20px auto;
+}
+
+.AddLinkModal_upload {
+  margin: 20px 0;
+}
+
+.AddLinkModal_error {
+  color: #e53935;
+}

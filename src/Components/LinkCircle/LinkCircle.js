@@ -1,8 +1,8 @@
-import React from 'react';
-import './styles.scss';
 import PropTypes from 'prop-types';
+import React from 'react';
 import def from '../../assets/global.png';
 import ClickableDiv from '../ClickableDiv';
+import './styles.css';
 
 const LinkCircle = ({
   name, img, onClick, editing, removeLink,

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Section from '../Section';
-import './styles.scss';
+import './styles.css';
 
 const moment = require('moment');
 
@@ -13,18 +13,18 @@ const LeftSide = ({ weather }) => (
         <p className="Left_dateTime_date">{moment().format('DD MMM YYYY')}</p>
       </div>
       {weather && (
-      <div className="Left_weather">
-        <p className="Left_weather_city">
-          {weather.location.name}
-        </p>
-        <p>
-          {weather && `${weather.current.temp_c} C - `}
-          {weather && weather.current.condition.text}
-        </p>
-        <div className="Left_weather_icon">
-          <img src={weather.current.condition.icon} alt={weather.current.temp_c} />
+        <div className="Left_weather">
+          <p className="Left_weather_city">
+            {weather.location.name}
+          </p>
+          <p>
+            {weather && `${weather.current.temp_c} C - `}
+            {weather && weather.current.condition.text}
+          </p>
+          <div className="Left_weather_icon">
+            <img src={weather.current.condition.icon} alt={weather.current.temp_c} />
+          </div>
         </div>
-      </div>
       )}
     </div>
   </Section>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Section from '../Section';
-import './styles.scss';
-import LinkCircle from '../../Components/LinkCircle/LinkCircle';
-import Plus from './Plus';
+import React, { useState } from 'react';
 import Edit from '../../assets/edit';
 import ClickableDiv from '../../Components/ClickableDiv';
+import LinkCircle from '../../Components/LinkCircle/LinkCircle';
+import Section from '../Section';
+import Plus from './Plus';
+import './styles.css';
 
 const RightSide = ({ localLinks, onClickAdd, removeLink }) => {
   const [editing, setEditing] = useState(false);
@@ -24,8 +24,8 @@ const RightSide = ({ localLinks, onClickAdd, removeLink }) => {
               removeLink={() => removeLink(l.name)}
               editing={editing}
               img={l.img}
-              onClick={() => { 
-                !editing? openLink(l.url) : removeLink(l.name)
+              onClick={() => {
+                !editing ? openLink(l.url) : removeLink(l.name);
               }}
               name={l.name}
             />

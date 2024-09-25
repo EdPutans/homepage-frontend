@@ -1,0 +1,54 @@
+.Link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Link>p {
+  font-size: 12px;
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Link:focus {
+  outline: 0;
+}
+
+.Link:hover {
+  cursor: pointer;
+}
+
+.Link_circle {
+
+  margin: 15px;
+  height: 55px;
+  width: 55px;
+  border-radius: 55px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #fff;
+}
+
+.Link_circle_removeButton {
+  color: white;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 3;
+}
+
+.Link_circle img {
+  background-color: #cccccc;
+  height: 55px;
+  width: 55px;
+
+}
+
+.Link_circle_container {
+  position: relative;
+}

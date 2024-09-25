@@ -1,0 +1,27 @@
+.Input {
+  height: 30px;
+  border-radius: 10px;
+  box-shadow: none;
+  border: 1px solid lightgray;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+}
+
+.Input::placeholder {
+  color: rgb(200, 200, 200);
+}
+
+.Input:focus {
+  outline: none;
+}
+
+@media only screen and (max-width: 1000px) {
+  .Input {
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+  }
+}

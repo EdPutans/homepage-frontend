@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Input from '../../Components/Input/Input';
-import './styles.scss';
+import React, { useState } from 'react';
 import Button from '../../Components/Button/Button';
+import Input from '../../Components/Input/Input';
+import './styles.css';
 
 const AddLinkModal = ({ onClose, addLink, savingError }) => {
   const [image, setimage] = useState(null);
@@ -43,7 +43,7 @@ const AddLinkModal = ({ onClose, addLink, savingError }) => {
                 setimage(e.target.files[0]);
               }
             }
-          }
+            }
           />
         </div>
         <Button
