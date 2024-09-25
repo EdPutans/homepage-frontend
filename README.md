@@ -8,7 +8,8 @@ Bookmarks are written to local storage, do not sync with any web serice (yet)
 
 Geolocation for the weather service uses the user's IP address,
 then calls the 2 following APIs:
-weather - http://api.apixu.com/v1/current.json
+
+weather - https://weatherstack.com/
 city by IP - https://ipapi.co/json
 
 Background picture is randomly selected from the picsum API - https://picsum.photos/v2/list
@@ -19,3 +20,4 @@ To run locally:
 1. clone repo
 2. navigate into the folder and run `yarn`
 3. run `yarn start`
+
